@@ -54,10 +54,10 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="index.html" class="nav-link">首页</a>
+          <a href="#" class="nav-link">首页</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="contact.html" class="nav-link">联系我们</a>
+          <a href="#" class="nav-link">联系我们</a>
         </li>
       </ul>
 
@@ -118,7 +118,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="index3.html" class="brand-link">
+      <a href="#" class="brand-link">
         <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
           style="opacity: .8">
         <span class="brand-text font-weight-light">车辆排检管理系统</span>
@@ -160,19 +160,19 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="realTimeAlarm.html" class="nav-link">
+                  <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>申请任务调度</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="exception.html" class="nav-link">
+                  <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>更改申请信息</p>
                   </a>
                 </li>
 				<li class="nav-item">
-				  <a href="exception.html" class="nav-link">
+				  <a href="#" class="nav-link">
 				    <i class="far fa-circle nav-icon"></i>
 				    <p>撤销申请</p>
 				  </a>
@@ -189,7 +189,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="eventTypeSelect.html" class="nav-link">
+                  <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>查询评价</p>
                   </a>
@@ -201,7 +201,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="dateSelect.html" class="nav-link">
+                  <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>个人检测记录</p>
                   </a>
