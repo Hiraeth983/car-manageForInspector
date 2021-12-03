@@ -12,24 +12,15 @@ import java.util.ArrayList;
 
 public class staffinfoImpl implements staffinfoDao {
 
-    public ArrayList<staffinfo> search() throws DaoException, SQLException {
+    public ArrayList<staffinfo> search() throws Exception {
         ArrayList<staffinfo> list=new ArrayList<staffinfo>();
         String sql = "select * from staff";
         PreparedStatement stmt = null;
-        try {
-            Connection conn = BaseDao.getConnection();
-            stmt = conn.prepareStatement(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        Connection conn = BaseDao.getConnection();
+        stmt = conn.prepareStatement(sql);
         ResultSet rs = null;
-        try {
-            rs = stmt.executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        rs = stmt.executeQuery();
         while (rs.next()) {
-            try {
                 staffinfo tem = new staffinfo();
                 tem.setStaffId(rs.getString("staffId"));
                 tem.setStaffname(rs.getString("staffname"));
@@ -37,38 +28,32 @@ public class staffinfoImpl implements staffinfoDao {
                 tem.setOrderSum(rs.getInt("orderSum"));
                 tem.setStationId(rs.getString("stationId"));
                 tem.setIsAble(rs.getBoolean("isAble"));
-            } catch (SQLException e) {
-                e.printStackTrace();
             }
-
-        }
         return list;
     }
 
     @Override
-    public void insert() throws DaoException {
-        String sql = "insert into staff values (?,?,?,?,?,?)";
-        PreparedStatement stmt = null;
+    public void insert() throws Exception {
         try {
+            String sql = "insert into staff values (?,?,?,?,?,?)";
+            PreparedStatement stmt = null;
             Connection conn = BaseDao.getConnection();
             stmt = conn.prepareStatement(sql);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    public void update() throws DaoException {
-        String sql = "upadte staff set staffId=? staffname=? avgScore=? orderSum=? stationId=? isAble=?";
-        PreparedStatement stmt = null;
+    public void update(){
         try {
-            Connection conn = BaseDao.getConnection();
+            String sql = "upadte staff set staffId=? staffname=? avgScore=? orderSum=? stationId=? isAble=?";
+            PreparedStatement stmt = null;
+            Connection conn = null;
+            conn = BaseDao.getConnection();
             stmt = conn.prepareStatement(sql);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public class DaoException extends Exception {
     }
 }

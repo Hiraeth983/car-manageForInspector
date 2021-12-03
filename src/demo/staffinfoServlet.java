@@ -5,19 +5,16 @@ import implement.staffinfoImpl;
 import model.staffinfo;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.ArrayList;
 
 @WebServlet(name = "staffinfoServlet",
         urlPatterns = {"/staffinfoServlet.action"})
 public class staffinfoServlet extends HttpServlet{
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+    public void doPost(HttpServletRequest request, HttpServletResponse response){
         response.setCharacterEncoding("UTF-8");
         staffinfoDao dao = new staffinfoImpl();
         ArrayList<staffinfo> staffinfolist;
@@ -33,16 +30,14 @@ public class staffinfoServlet extends HttpServlet{
             jsonObject.put("data", result);
             response.getWriter().print(jsonObject);
             //request.setAttribute("stationlist",Stationlist);
-        } catch (staffinfoImpl.DaoException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         } catch (Exception e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
 
     }
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response){
         doPost(request,response);
     }
 }

@@ -22,7 +22,7 @@ public class missionServlet extends HttpServlet{
         missionDao dao = new missionImpl();
         ArrayList<mission> missionlist;
         try {
-            missionlist = (ArrayList<mission>) dao.search();
+            missionlist = dao.search();
             //2.将list存入request域
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("code", 0);
@@ -33,10 +33,8 @@ public class missionServlet extends HttpServlet{
             jsonObject.put("data", result);
             response.getWriter().print(jsonObject);
             //request.setAttribute("stationlist",Stationlist);
-        } catch (missionImpl.DaoException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         } catch (Exception e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 

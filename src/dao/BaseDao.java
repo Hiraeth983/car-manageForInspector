@@ -1,5 +1,4 @@
 package dao;
-import implement.staffinfoImpl;
 import java.sql.*;
 import javax.sql.DataSource;
 import javax.naming.*;
@@ -19,7 +18,7 @@ public interface BaseDao {
         return dataSource;
     }
     // 返回一个连接对象
-    public static Connection getConnection() throws staffinfoImpl.DaoException {
+    public static Connection getConnection() throws Exception {
         DataSource dataSource = getDataSource();
         Connection conn = null;
         try{
