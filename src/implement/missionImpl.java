@@ -6,6 +6,7 @@ import model.mission;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -15,11 +16,25 @@ public class missionImpl implements missionDao {
         ArrayList<mission> list = new ArrayList<mission>();
         String sql = "select * from record";
         PreparedStatement stmt = null;
-        Connection conn = BaseDao.getConnection();
-        stmt = conn.prepareStatement(sql);
-        ResultSet rs = null;
-        rs = stmt.executeQuery();
-            while (rs.next()) {
+        try {
+            Connection conn = BaseDao.getConnection();
+            stmt = conn.prepareStatement(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+            ResultSet rs = null;
+            try {
+                rs = stmt.executeQuery();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+            while (true) {
+                try {
+                    if (!rs.next()) break;
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+                try {
                     mission tem = new mission();
                     tem.setOrderId(rs.getString("orderId"));
                     tem.setIdcard(rs.getString("idcard"));
@@ -35,9 +50,16 @@ public class missionImpl implements missionDao {
                     tem.setProcess(rs.getString("process"));
                     tem.setAvailable(rs.getBoolean("available"));
                     list.add(tem);
+                } catch (SQLException e3) {
+                    e3.printStackTrace();
                 }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return list;
     }
+
 }
 
 

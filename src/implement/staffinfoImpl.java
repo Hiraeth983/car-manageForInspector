@@ -16,19 +16,23 @@ public class staffinfoImpl implements staffinfoDao {
         ArrayList<staffinfo> list=new ArrayList<staffinfo>();
         String sql = "select * from staff";
         PreparedStatement stmt = null;
-        Connection conn = BaseDao.getConnection();
-        stmt = conn.prepareStatement(sql);
-        ResultSet rs = null;
-        rs = stmt.executeQuery();
-        while (rs.next()) {
+        try {
+            Connection conn = BaseDao.getConnection();
+            stmt = conn.prepareStatement(sql);
+            ResultSet rs = null;
+            rs = stmt.executeQuery();
+            while (rs.next()) {
                 staffinfo tem = new staffinfo();
                 tem.setStaffId(rs.getString("staffId"));
                 tem.setStaffname(rs.getString("staffname"));
                 tem.setAvgScore(rs.getDouble("avgScore"));
                 tem.setOrderSum(rs.getInt("orderSum"));
                 tem.setStationId(rs.getString("stationId"));
-                tem.setIsAble(rs.getBoolean("isAble"));
+                tem.setIsAble(rs.getInt("isAble"));
             }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return list;
     }
 

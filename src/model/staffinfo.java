@@ -1,57 +1,57 @@
 package model;
 public class staffinfo {
-    private static String staffId;
-    private static String staffname;
-    private static double avgScore;
-    private static int orderSum;
-    private static String stationId;
-    private static boolean isAble;
+    private String staffId;
+    private String staffname;
+    private double avgScore;
+    private int orderSum;
+    private String stationId;
+    private int isAble;
 
-    public static String getStaffId() {
+    public String getStaffId() {
         return staffId;
     }
 
-    public static void setStaffId(String staffId) {
-        staffinfo.staffId = staffId;
+    public void setStaffId(String staffId) {
+        this.staffId = staffId;
     }
 
-    public static String getStaffname() {
+    public String getStaffname() {
         return staffname;
     }
 
-    public static void setStaffname(String staffname) {
-        staffinfo.staffname = staffname;
+    public void setStaffname(String staffname) {
+        this.staffname = staffname;
     }
 
-    public static double getAvgScore() {
+    public double getAvgScore() {
         return avgScore;
     }
 
-    public static void setAvgScore(double avgScore) {
-        staffinfo.avgScore = avgScore;
+    public void setAvgScore(double avgScore) {
+        this.avgScore = avgScore;
     }
 
-    public static int getOrderSum() {
+    public int getOrderSum() {
         return orderSum;
     }
 
-    public static void setOrderSum(int orderSum) {
-        staffinfo.orderSum = orderSum;
+    public void setOrderSum(int orderSum) {
+        this.orderSum = orderSum;
     }
 
-    public static String getStationId() {
+    public String getStationId() {
         return stationId;
     }
 
-    public static void setStationId(String stationId) {
-        staffinfo.stationId = stationId;
+    public void setStationId(String stationId) {
+        this.stationId = stationId;
     }
 
-    public static boolean isIsAble() {
+    public int getIsAble() {
         return isAble;
     }
 
-    public static void setIsAble(boolean isAble) {
-        staffinfo.isAble = isAble;
+    public void setIsAble(int isAble) {
+        this.isAble = isAble;
     }
 }
