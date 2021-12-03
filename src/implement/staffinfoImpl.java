@@ -6,7 +6,7 @@ import model.staffinfo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+import demo.insertServlet;
 import java.util.ArrayList;
 
 
@@ -33,12 +33,18 @@ public class staffinfoImpl implements staffinfoDao {
     }
 
     @Override
-    public void insert() throws Exception {
+    public void insert(String staffid,String staffname,String stationid,Boolean isable) throws Exception {
         try {
             String sql = "insert into staff values (?,?,?,?,?,?)";
             PreparedStatement stmt = null;
             Connection conn = BaseDao.getConnection();
             stmt = conn.prepareStatement(sql);
+            stmt.setString(1,staffid);
+            stmt.setString(2,staffname);
+            stmt.setDouble(3,0);
+            stmt.setInt(4,0);
+            stmt.setString(5,stationid);
+            stmt.setBoolean(6,isable);
         } catch (Exception e) {
             e.printStackTrace();
         }

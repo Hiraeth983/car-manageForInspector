@@ -319,7 +319,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">工号</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="nuber" lay-verify="nuber" placeholder="请输入" autocomplete="off"  class="layui-input">
+                            <input type="text" name="number" lay-verify="number" placeholder="请输入" autocomplete="off"  class="layui-input">
                         </div>
                     </div>
                     <br/>
@@ -342,7 +342,7 @@
                         <button type="button" class="layui-btn" id="test2">资格证上传</button>
                         <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 5px;width:8em;display:inline-block;">
                             预览图：
-                            <div class="layui-upload-list" id="demo2"></div>
+                            <div class="layui-upload-list" id="demo2" name="demo2"></div>
                         </blockquote>
                     </div>
                     <br/>
