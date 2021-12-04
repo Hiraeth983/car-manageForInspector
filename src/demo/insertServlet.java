@@ -1,20 +1,20 @@
 package demo;
 
 import dao.staffinfoDao;
-import implement.staffinfoImpl;
+import implement.staffInfoImpl;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "staffinsertServlet",
-        urlPatterns = {"/staffinsertServlet.action"})
+@WebServlet(name = "insertStaffInfoServlet",
+        urlPatterns = {"/insertStaffInfoServlet.action"})
 public class insertServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         try {
             response.setContentType("text/html;charset=UTF-8");  //设置格式编码
             request.setCharacterEncoding("UTF-8");            //设置格式编码
-            staffinfoDao dao = new staffinfoImpl();
+            staffinfoDao dao = new staffInfoImpl();
             String staffid=request.getParameter("number");
             String staffname=request.getParameter("username");
             String stationid=request.getParameter("title");

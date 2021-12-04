@@ -292,70 +292,7 @@
 
 
 
-        <form class="layui-form" action="staffinsertServlet.action">
 
-            <div style="margin: 0 auto; max-width: 1140px;">
-
-
-                <div class="layui-row">
-
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">姓名</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="username" lay-verify="required"  placeholder="请输入" autocomplete="off" class="layui-input">
-
-                        </div>
-                    </div>
-                    <br/>
-
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">站点号</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="title" lay-verify="title" placeholder="请输入" autocomplete="off"  class="layui-input">
-                        </div>
-                    </div>
-                    <br/>
-
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">工号</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="number" lay-verify="number" placeholder="请输入" autocomplete="off"  class="layui-input">
-                        </div>
-                    </div>
-                    <br/>
-
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">评分</label>
-                    </div>
-                    <br/>
-
-                    <br/>
-                    <div class="layui-upload">
-                        <button type="button" class="layui-btn" id="test1">一寸照上传</button>
-                        <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 5px;width:8em;display:inline-block;">
-                            预览图：
-                            <div class="layui-upload-list" id="demo1"></div>
-                        </blockquote>
-                    </div>
-                    <br/>
-                    <div class="layui-upload">
-                        <button type="button" class="layui-btn" id="test2">资格证上传</button>
-                        <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 5px;width:8em;display:inline-block;">
-                            预览图：
-                            <div class="layui-upload-list" id="demo2" name="demo2"></div>
-                        </blockquote>
-                    </div>
-                    <br/>
-
-                    <div class="layui-form-item">
-                        <div class="layui-input-block1">
-                            <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">提交</button>
-                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
 
 
 
@@ -363,7 +300,70 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
+                <form class="layui-form" action="searchStaffInfoServlet.action" method="post">
 
+                    <div style="margin: 0 auto; max-width: 1140px;">
+
+
+                        <div class="layui-row">
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">姓名</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="username" lay-verify="required"  placeholder="请输入" autocomplete="off" class="layui-input">
+
+                                </div>
+                            </div>
+                            <br/>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">站点号</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="title" lay-verify="title" placeholder="请输入" autocomplete="off"  class="layui-input">
+                                </div>
+                            </div>
+                            <br/>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">工号</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="number" lay-verify="number" placeholder="请输入" autocomplete="off"  class="layui-input">
+                                </div>
+                            </div>
+                            <br/>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">评分</label>
+                            </div>
+                            <br/>
+
+                            <br/>
+                            <div class="layui-upload">
+                                <button type="button" class="layui-btn" id="test1">一寸照上传</button>
+                                <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 5px;width:8em;display:inline-block;">
+                                    预览图：
+                                    <div class="layui-upload-list" id="demo1"></div>
+                                </blockquote>
+                            </div>
+                            <br/>
+                            <div class="layui-upload">
+                                <button type="button" class="layui-btn" id="test2">资格证上传</button>
+                                <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 5px;width:8em;display:inline-block;">
+                                    预览图：
+                                    <div class="layui-upload-list" id="demo2" name="demo2"></div>
+                                </blockquote>
+                            </div>
+                            <br/>
+
+                            <div class="layui-form-item">
+                                <div class="layui-input-block1">
+                                    <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">提交</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->
@@ -418,6 +418,27 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
 <script src="plugins/layui/layui.js"></script>
+
+<!--表单内容-->
+<script>
+    layui.use('table', function(){
+        var table = layui.table;
+
+        //第一个实例
+        table.render({
+            elem: '#demo'
+            ,height: 312
+            ,url: 'searchStaffInfo.action' //数据接口
+            ,page: true //开启分页
+            ,cols: [[ //表头
+                {field: 'stationName', title: '姓名', width:163, sort: true, fixed: 'left'}
+                ,{field: 'stationId', title: '站点号', width:163}
+                ,{field: 'staffId', title: '工号', width:163}
+                ,{field: 'avgScore', title: '评分', width:163}
+            ]]
+        });
+    });
+</script>
 
 </body>
 

@@ -1,7 +1,7 @@
 package demo;
 
 import dao.staffinfoDao;
-import implement.staffinfoImpl;
+import implement.staffInfoImpl;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +19,7 @@ public class updateServlet extends HttpServlet{
             request.setCharacterEncoding("UTF-8");            //设置格式编码
             userName = request.getParameter("root");     //接收表单传过来的用户账号
             passWord = request.getParameter("wjx200008253718");  //用户密码
-            staffinfoDao dao = new staffinfoImpl();
+            staffinfoDao dao = new staffInfoImpl();
             dao.update();
         } catch (Exception e) {
             e.printStackTrace();

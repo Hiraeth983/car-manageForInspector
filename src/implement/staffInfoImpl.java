@@ -6,11 +6,10 @@ import model.staffinfo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import demo.insertServlet;
 import java.util.ArrayList;
 
 
-public class staffinfoImpl implements staffinfoDao {
+public class staffInfoImpl implements staffinfoDao {
 
     public ArrayList<staffinfo> search() throws Exception {
         ArrayList<staffinfo> list=new ArrayList<staffinfo>();
@@ -24,7 +23,7 @@ public class staffinfoImpl implements staffinfoDao {
             while (rs.next()) {
                 staffinfo tem = new staffinfo();
                 tem.setStaffId(rs.getString("staffId"));
-                tem.setStaffname(rs.getString("staffname"));
+                tem.setStaffname(rs.getString("fullname"));
                 tem.setAvgScore(rs.getDouble("avgScore"));
                 tem.setOrderSum(rs.getInt("orderSum"));
                 tem.setStationId(rs.getString("stationId"));

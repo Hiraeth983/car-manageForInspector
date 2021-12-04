@@ -1,7 +1,7 @@
 package demo;
 
 import dao.staffinfoDao;
-import implement.staffinfoImpl;
+import implement.staffInfoImpl;
 import model.staffinfo;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 
-@WebServlet(name = "staffinfoServlet",
-        urlPatterns = {"/staffinfoServlet.action"})
-public class staffinfoServlet extends HttpServlet{
+@WebServlet(name = "searchStaffInfoServlet",
+        urlPatterns = {"/searchStaffInfoServlet.action"})
+public class searchStaffInfoServlet extends HttpServlet{
     public void doPost(HttpServletRequest request, HttpServletResponse response){
         response.setCharacterEncoding("UTF-8");
-        staffinfoDao dao = new staffinfoImpl();
+        staffinfoDao dao = new staffInfoImpl();
         ArrayList<staffinfo> staffinfolist;
         try {
             staffinfolist = (ArrayList<staffinfo>) dao.search();
