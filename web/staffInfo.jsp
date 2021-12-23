@@ -374,7 +374,7 @@
     let stationId = "${sessionScope.staff.stationId}";
     let staffId = "${sessionScope.staff.staffId}";
 </script>
-<script src="dist/js/pages/stationInfo.js"></script>
+<script src="dist/js/pages/staffInfo.js"></script>
 </body>
 </html>
 
