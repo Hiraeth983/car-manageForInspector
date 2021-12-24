@@ -247,7 +247,7 @@ $(function () {
     $('#assignForm').submit(function (event) {
         let orderId = $('#confirmOrderId').val();
         let result = $('#confirmResult').val();
-
+        let idCard = $("#confirmIdCard").val();
         $.ajax({
             url: 'uploadDetectionResult',
             type: 'post',
@@ -255,6 +255,7 @@ $(function () {
             data: {
                 orderId,
                 result,
+                idCard,
                 staffId,
                 stationId
             },

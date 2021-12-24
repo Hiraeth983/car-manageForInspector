@@ -26,9 +26,17 @@ public interface ApplicationDao {
 
     /**
      * 插入一条申请任务调换信息
+     *
      * @param application
      * @return 插入是否成功
      * @throws Exception
      */
     Boolean insertApplication(Application application) throws Exception;
+
+    ArrayList<Application> getApplicationListByStaffId(String staffId) throws Exception;
+
+    Boolean deleteApplicationByOrderId(String orderId) throws Exception;
+
+    Boolean updateApplicationByOrderId(Application application) throws Exception;
+
 }
