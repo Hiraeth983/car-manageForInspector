@@ -1,6 +1,13 @@
 <%--
   Created by IntelliJ IDEA.
   User: 李龙
+  Date: 2021/12/23
+  Time: 22:55
+  To change this template use File | Settings | File Templates.
+--%>
+<%--
+  Created by IntelliJ IDEA.
+  User: 李龙
   Date: 2021/12/3
   Time: 21:33
   To change this template use File | Settings | File Templates.
@@ -15,7 +22,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>上传检测结果</title>
+    <title>查询检测任务</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -156,7 +163,7 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview"
                     role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
-        with font-awesome or any other icon font library -->
+          with font-awesome or any other icon font library -->
                     <li class="nav-item">
                         <a href="stationInfo.jsp" class="nav-link">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -234,20 +241,20 @@
         <section class="content">
             <div class="container-fluid">
                 <div>&nbsp;</div>
-                <h3 class="text-dark mb-4">上传检测结果</h3>
+                <h3 class="text-dark mb-4">查询检测任务</h3>
                 <div class="card shadow">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6 text-nowrap">
                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                                         data-target="#modal-lg">
-                                    上传检测结果
+                                    申请任务调度
                                 </button>
                                 <div class="modal fade" id="modal-lg">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title">上传检测结果</h4>
+                                                <h4 class="modal-title">申请任务调度</h4>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -279,7 +286,7 @@
                                                                                     aria-controls="select-staff-part"
                                                                                     id="select-staff-part-trigger">
                                                                                 <span class="bs-stepper-circle">2</span>
-                                                                                <span class="bs-stepper-label">选择结果</span>
+                                                                                <span class="bs-stepper-label">选择员工</span>
                                                                             </button>
                                                                         </div>
                                                                         <div class="line"></div>
@@ -401,9 +408,25 @@
                                                                              role="tabpanel"
                                                                              aria-labelledby="select-staff-part-trigger">
                                                                             <div class="form-group row">
-                                                                                <label class="col-sm-2 control-label">检测结果</label>
+                                                                                <label class="col-sm-2 control-label"
+                                                                                       for="staffId">检测员工号</label>
                                                                                 <div class="col-sm-10">
-                                                                                    <input name="switch" type="checkbox" checked>
+                                                                                    <input type="text"
+                                                                                           class="form-control"
+                                                                                           name="staffId"
+                                                                                           id="selectStaffId" disabled>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label class="col-sm-2 control-label">选择员工姓名</label>
+                                                                                <div class="col-sm-10">
+                                                                                    <select class="selectpicker"
+                                                                                            id="selectStaff"
+                                                                                            data-live-search="true"
+                                                                                            data-style="btn-info"
+                                                                                            title="请选择员工姓名"
+                                                                                            data-live-search-placeholder="搜索员工姓名">
+                                                                                    </select>
                                                                                 </div>
                                                                             </div>
 
@@ -418,8 +441,7 @@
                                                                         <div id="submit-part" class="content"
                                                                              role="tabpanel"
                                                                              aria-labelledby="submit-part-trigger">
-                                                                            <form class="form-horizontal" role="form"
-                                                                                  id="assignForm">
+                                                                            <form class="form-horizontal" role="form">
                                                                                 <div class="form-group row">
                                                                                     <label class="col-sm-2 control-label"
                                                                                            for="confirmOrderId">单号</label>
@@ -499,7 +521,7 @@
                                                                                 </div>
                                                                                 <div class="form-group row">
                                                                                     <label class="col-sm-2 control-label"
-                                                                                           for="confirmStaffId">检测员工号</label>
+                                                                                           for="confirmStaffId">调换员工号</label>
                                                                                     <div class="col-sm-10">
                                                                                         <input type="text"
                                                                                                class="form-control"
@@ -510,7 +532,7 @@
                                                                                 </div>
                                                                                 <div class="form-group row">
                                                                                     <label class="col-sm-2 control-label"
-                                                                                           for="confirmStaffName">检测员姓名</label>
+                                                                                           for="confirmStaffName">调换员工姓名</label>
                                                                                     <div class="col-sm-10">
                                                                                         <input type="text"
                                                                                                class="form-control"
@@ -521,21 +543,21 @@
                                                                                 </div>
                                                                                 <div class="form-group row">
                                                                                     <label class="col-sm-2 control-label"
-                                                                                           for="confirmResult">检测结果</label>
+                                                                                           for="confirmReason">申请原因</label>
                                                                                     <div class="col-sm-10">
-                                                                                        <input type="text"
+                                                                                        <textarea required
                                                                                                class="form-control"
-                                                                                               name="confirmResult"
-                                                                                               id="confirmResult"
-                                                                                               disabled>
+                                                                                               name="confirmReason"
+                                                                                               id="confirmReason"></textarea>
                                                                                     </div>
                                                                                 </div>
-                                                                                <button class="btn btn-primary" type="button"
+                                                                                <button class="btn btn-primary"
+                                                                                        type="button"
                                                                                         onclick="stepper.previous()">
                                                                                     Previous
                                                                                 </button>
-                                                                                <button type="submit"
-                                                                                        class="btn btn-primary">上传
+                                                                                <button type="submit" id="assignForm"
+                                                                                        class="btn btn-primary">提交申请
                                                                                 </button>
                                                                             </form>
                                                                         </div>
@@ -637,7 +659,8 @@
     let stationId = "${sessionScope.staff.stationId}";
     let staffId = "${sessionScope.staff.staffId}";
 </script>
-<script src="dist/js/pages/uploadDetectionResult.js"></script>
+<script src="dist/js/pages/taskScheduling.js"></script>
 </body>
 </html>
+
 

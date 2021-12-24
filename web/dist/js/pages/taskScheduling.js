@@ -1,6 +1,27 @@
 let recordList = [];
 let staffList = [];
 
+function getStaffNameList() {
+    let staffNameList = '';
+    $.ajax({
+        url: 'getStaffListByStationId',
+        type: 'post',
+        dataType: 'json',
+        data: {
+            stationId
+        },
+        success: function (data) {
+            staffList = data;
+            console.log(staffList);
+            for (let j = 0; j < data.length; j++) {
+                staffNameList += `<option value='` + data[j].fullName + `'>` + data[j].fullName + `</option>`;
+            }
+            // console.log(staffName);
+        }
+    });
+    console.log(staffNameList);
+    return staffNameList;
+};
 
 // 生成模板
 function generateStr(data) {
@@ -103,6 +124,9 @@ function init() {
     for (let j = 0; j < newList.length; j++) {
         temp += `<option value="` + newList[j].carId + `">` + newList[j].carId + `</option>`;
     }
+    let staffNameList = getStaffNameList();
+    $("#selectStaff").append($(staffNameList));
+    $("#selectStaff").selectpicker("refresh");
     $("#selectCarId").append($(temp));
     $("#selectCarId").selectpicker("refresh");
 
@@ -150,23 +174,6 @@ $(function () {
                 let str = generateStr(recordList);
                 // 将定义好的内容,写入到tbody标签中
                 tb.innerHTML = str;
-            }
-        }
-    });
-
-    $("#confirmResult").val("正常");
-    $("[name='switch']").bootstrapSwitch({
-        onText: "正常",      // 设置ON文本
-        offText: "异常",    // 设置OFF文本
-        onColor: "success",// 设置ON文本颜色(info/success/warning/danger/primary)
-        offColor: "danger",  // 设置OFF文本颜色 (info/success/warning/danger/primary)
-        size: "normal",    // 设置控件大小,从小到大  (mini/small/normal/large)
-        // 当开关状态改变时触发
-        onSwitchChange: function (event, state) {
-            if (state == true) {
-                $("#confirmResult").val("正常");
-            } else {
-                $("#confirmResult").val("异常");
             }
         }
     });
@@ -240,22 +247,30 @@ $(function () {
         $("#confirmAddress").val(obj.address);
         $("#confirmOrderTime").val(obj.orderTime);
         $("#confirmCheckTime").val(obj.checkTime);
-        $("#confirmStaffId").val(obj.staffId);
-        $("#confirmStaffName").val(obj.staffName);
+        // $("#confirmStaffId").val(obj.staffId);
+        // $("#confirmStaffName").val(obj.staffName);
     });
 
-    $('#assignForm').submit(function (event) {
-        let orderId = $('#confirmOrderId').val();
-        let result = $('#confirmResult').val();
+    $('#selectStaff').change(function () {
+        let staffName = $("#selectStaff").val();
+        let obj = staffList.find(item => item.fullName == staffName);
+        $('#confirmStaffId').val(obj.staffId);
+        $('#confirmStaffName').val(staffName);
+        $('#selectStaffId').val(obj.staffId);
+    });
+
+    $('#assignForm').click(function () {
 
         $.ajax({
-            url: 'uploadDetectionResult',
+            url: 'applyTaskScheduling',
             type: 'post',
             dataType: 'json',
             data: {
-                orderId,
-                result,
-                staffId,
+                orderId:$("#confirmOrderId").val(),
+                nStaffId:$('#confirmStaffId').val(),
+                oStaffId:staffId,
+                submitTime:(new Date()).Format("yyyy-MM-dd hh:mm:ss"),
+                reason:$('#confirmReason').val(),
                 stationId
             },
             success: function (data) {
@@ -276,7 +291,6 @@ $(function () {
                 }
             }
         });
-        event.preventDefault();  // 阻止form表单的默认提交路径：action指定的路径
     });
 
 

@@ -7,6 +7,7 @@ import utils.DataBaseConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class StaffDaoImpl extends DataBaseConnection implements StaffDao {
     /**
@@ -68,5 +69,40 @@ public class StaffDaoImpl extends DataBaseConnection implements StaffDao {
         }
         DataBaseConnection.closeAll(conn, pstmt, result);
         return staff;
+    }
+
+    /**
+     * 查询对应检测站员工姓名
+     *
+     * @param stationId
+     * @return 指定检测站员工姓名列表
+     * @throws Exception
+     */
+    @Override
+    public ArrayList<Staff> getStaffListByStationId(String stationId) throws Exception {
+        ArrayList<Staff> staffList = new ArrayList<>();
+        Connection conn = DataBaseConnection.getConnection();
+        String sql = "SELECT * FROM staff where stationId=?";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, stationId);
+        ResultSet result = pstmt.executeQuery();
+        while (result.next()) {
+            Staff staff = new Staff();
+            staff.setStaffId(result.getString(1));
+            staff.setPassword(result.getString(2));
+            staff.setFullName(result.getString(3));
+            staff.setAvgScore(result.getDouble(4));
+            staff.setOrderSum(result.getInt(5));
+            staff.setStationId(result.getString(6));
+            staff.setIsAble(result.getInt(7));
+
+            staffList.add(staff);
+        }
+        DataBaseConnection.closeAll(conn, pstmt, result);
+        if (!staffList.isEmpty()) {
+            return staffList;
+        } else {
+            return new ArrayList<>();
+        }
     }
 }
