@@ -161,12 +161,11 @@ public class ApplicationDaoImpl extends DataBaseConnection implements Applicatio
 
     public Boolean updateApplicationByOrderId(Application application) throws Exception {
         Connection conn = DataBaseConnection.getConnection();
-        String sql = "update application set reason=?,oStaffId=?,oStaffName=? where orderId=?;";
+        String sql = "update application set reason=?,nStaffId=? where orderId=?;";
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setString(1, application.getReason());
         pstmt.setString(2, application.getnStaffId());
-        pstmt.setString(3,application.getnStaffName());
-        pstmt.setString(4,application.getOrderId());
+        pstmt.setString(3,application.getOrderId());
 
         boolean flag = pstmt.executeUpdate() > 0;
         conn.close();

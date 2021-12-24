@@ -62,6 +62,8 @@ function check(obj) {
             staffId
         },
         success: function (data) {
+            $(".modal").modal('hide');
+            $('.modal-backdrop').remove();//去掉遮罩层
             applicationList = data;
             // console.log(recordList);
             let tb = document.getElementById('tb');

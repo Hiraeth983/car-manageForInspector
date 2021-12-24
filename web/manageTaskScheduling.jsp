@@ -147,69 +147,46 @@
                     <!-- Add icons to the links using the .nav-icon class
         with font-awesome or any other icon font library -->
                     <li class="nav-item">
-                        <a href="stationInfo.jsp" class="nav-link">
+                        <a href="staffInfo.jsp" class="nav-link">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
-                                检测站信息
+                                员工基本信息
                             </p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="manageStaff.jsp" class="nav-link">
+                        <a href="queryComplaint.jsp" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
                             <p>
-                                员工信息管理
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="recordInfo.jsp" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
-                            <p>
-                                车辆检测记录
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="manageDetectionInfo.jsp" class="nav-link">
-                            <i class="nav-icon fas fa-edit"></i>
-                            <p>
-                                分配员工检测任务
+                                查询投诉信息
                             </p>
                         </a>
                     </li>
                     <li class="nav-item menu-open">
-                        <a href="examineApplication.jsp" class="nav-link active">
+                        <a href="manageTaskScheduling.jsp" class="nav-link active">
+                            <i class="nav-icon fas fa-copy"></i>
+                            <p>
+                                任务调度信息
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="taskScheduling.jsp" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
                             <p>
-                                审核调度申请
+                                查询检测任务
                             </p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="countComplaintInfo.jsp" class="nav-link">
-                            <i class="nav-icon fas fa-chart-pie"></i>
+                        <a href="uploadDetectionResult.jsp" class="nav-link">
+                            <i class="nav-icon fas fa-edit"></i>
                             <p>
-                                统计评价信息
+                                上传检测结果
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="countDetectionInfo.jsp" class="nav-link">
-                            <i class="nav-icon fas fa-calendar-alt"></i>
-                            <p>
-                                统计检测记录
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="examineComplaint.jsp" class="nav-link">
-                            <i class="nav-icon fas fa-columns"></i>
-                            <p>
-                                审批车主投诉
-                            </p>
-                        </a>
-                    </li>
+
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
